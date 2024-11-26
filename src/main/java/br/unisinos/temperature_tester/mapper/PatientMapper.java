@@ -35,6 +35,12 @@ public class PatientMapper {
                 .build();
     }
 
+    public static List<PatientResponse> toResponse(List<Patient> patients) {
+        var patientsResponse = new ArrayList<PatientResponse>();
+        patients.forEach(patient -> patientsResponse.add(toResponse(patient)));
+        return patientsResponse;
+    }
+
     private static List<TreatmentResponse> getTreatments(List<Treatment> treatments) {
         var treatmentsResponse = new ArrayList<TreatmentResponse>();
         treatments.forEach(treatment -> treatmentsResponse.add(TreatmentMapper.toResponse(treatment)));

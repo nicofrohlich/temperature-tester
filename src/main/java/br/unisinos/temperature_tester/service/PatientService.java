@@ -5,6 +5,8 @@ import br.unisinos.temperature_tester.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static java.util.Objects.isNull;
 
 @Service
@@ -26,5 +28,9 @@ public class PatientService {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public List<Patient> listPatients(){
+        return patientRepository.findAll();
     }
 }
