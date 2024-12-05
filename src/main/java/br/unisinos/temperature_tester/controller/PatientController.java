@@ -2,6 +2,7 @@ package br.unisinos.temperature_tester.controller;
 
 import br.unisinos.temperature_tester.controller.request.PatientRequest;
 import br.unisinos.temperature_tester.controller.response.PatientResponse;
+import br.unisinos.temperature_tester.mapper.PatientMapper;
 import br.unisinos.temperature_tester.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,10 @@ public class PatientController {
     private final PatientService patientService;
 
     @PostMapping("/patient")
-    @ResponseStatus(value = HttpStatus.CREATED)
-    public void registerPatient(@RequestBody PatientRequest request){
-        patientService.registerPatient(toDomain(request));
+    @ResponseStatus(value = HttpStatus.OK)
+    public ResponseEntity<PatientResponse> registerPatient(@RequestBody PatientRequest request){
+        var patient = patientService.registerPatient(toDomain(request));
+        return ResponseEntity.ok().body(PatientMapper.toResponse(patient));
     }
 
     @GetMapping("/patient/{document}")

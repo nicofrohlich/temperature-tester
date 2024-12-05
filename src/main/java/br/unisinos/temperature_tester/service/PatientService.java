@@ -15,11 +15,12 @@ public class PatientService {
 
     private final PatientRepository patientRepository;
 
-    public void registerPatient(Patient patient){
-        var patientExists = consultPatient(patient.getDocument());
-        if (isNull(patientExists)){
-            patientRepository.save(patient);
+    public Patient registerPatient(Patient patient){
+        var existentPatient = consultPatient(patient.getDocument());
+        if (isNull(existentPatient)) {
+            return patientRepository.save(patient);
         }
+        return existentPatient;
     }
 
     public Patient consultPatient(String document) {

@@ -15,11 +15,12 @@ public class TreatmentService {
     private final PatientRepository patientRepository;
     private final TreatmentRepository treatmentRepository;
 
-    public void registerTreatment(Treatment treatment, String document){
+    public Treatment registerTreatment(Treatment treatment, String document){
         var patient = patientRepository.getPatientByDocument(document);
         if (nonNull(patient)){
             treatment.setPatient(patient);
-            treatmentRepository.save(treatment);
+            return treatmentRepository.save(treatment);
         }
+        return null;
     }
 }

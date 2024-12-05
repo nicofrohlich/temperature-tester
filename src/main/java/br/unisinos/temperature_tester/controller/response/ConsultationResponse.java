@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConsultationResponse {
+    private Long id;
     private LocalDate sessionDate;
     private Long temperatureValue;
 }

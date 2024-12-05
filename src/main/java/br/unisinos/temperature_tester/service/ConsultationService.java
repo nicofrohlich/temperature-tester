@@ -15,11 +15,12 @@ public class ConsultationService {
     private final TreatmentRepository treatmentRepository;
     private final ConsultationRepository consultationRepository;
 
-    public void registerConsultation(Consultation consultation, Long treatmentId) {
+    public Consultation registerConsultation(Consultation consultation, Long treatmentId) {
         var treatment = treatmentRepository.getTreatmentById(treatmentId);
         if (nonNull(treatment)){
             consultation.setTreatment(treatment);
-            consultationRepository.save(consultation);
+            return consultationRepository.save(consultation);
         }
+        return null;
     }
 }

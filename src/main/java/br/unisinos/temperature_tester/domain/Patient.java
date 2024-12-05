@@ -1,6 +1,5 @@
 package br.unisinos.temperature_tester.domain;
 
-import br.unisinos.temperature_tester.domain.enums.GenderEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +24,7 @@ public class Patient {
     private LocalDate birth;
     @Column(unique = true)
     private String document;
-    private GenderEnum gender;
+    private String gender;
     @OneToMany(mappedBy = "patient", fetch = FetchType.EAGER)
     private List<Treatment> treatments = new ArrayList<>();
 }

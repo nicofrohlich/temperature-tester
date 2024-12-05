@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TreatmentResponse {
+    private Long id;
     private String treatmentRegion;
     private LocalDate initialDate;
     private List<ConsultationResponse> consultations;

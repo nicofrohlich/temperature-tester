@@ -27,6 +27,7 @@ public class PatientMapper {
 
     public static PatientResponse toResponse(Patient patient) {
         return PatientResponse.builder()
+                .id(patient.getId())
                 .name(patient.getName())
                 .document(patient.getDocument())
                 .gender(patient.getGender())

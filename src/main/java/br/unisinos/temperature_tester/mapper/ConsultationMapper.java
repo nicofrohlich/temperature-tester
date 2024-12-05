@@ -22,6 +22,7 @@ public class ConsultationMapper {
 
     public static ConsultationResponse toResponse(Consultation consultation) {
         return ConsultationResponse.builder()
+                .id(consultation.getId())
                 .sessionDate(consultation.getSessionDate())
                 .temperatureValue(consultation.getTemperatureValue())
                 .build();
