@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Objects.nonNull;
+
 @Component
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TreatmentMapper {
@@ -28,7 +30,7 @@ public class TreatmentMapper {
                 .id(treatment.getId())
                 .treatmentRegion(treatment.getTreatmentRegion())
                 .initialDate(treatment.getInitialDate())
-                .consultations(getConsultations(treatment.getConsultation()))
+                .consultations(nonNull(treatment.getConsultation()) ? getConsultations(treatment.getConsultation()) : null)
                 .build();
     }
 
