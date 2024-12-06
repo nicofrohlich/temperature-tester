@@ -20,7 +20,7 @@ public class PatientService {
         if (isNull(existentPatient)) {
             return patientRepository.save(patient);
         }
-        return existentPatient;
+        return null;
     }
 
     public Patient consultPatient(String document) {

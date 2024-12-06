@@ -27,7 +27,7 @@ public class PatientController {
     @ResponseStatus(value = HttpStatus.OK)
     public ResponseEntity<PatientResponse> registerPatient(@RequestBody PatientRequest request){
         var patient = patientService.registerPatient(toDomain(request));
-        return ResponseEntity.ok().body(PatientMapper.toResponse(patient));
+        return isNull(patient) ? ResponseEntity.badRequest().build() : ResponseEntity.ok().body(PatientMapper.toResponse(patient));
     }
 
     @GetMapping("/patient/{document}")
